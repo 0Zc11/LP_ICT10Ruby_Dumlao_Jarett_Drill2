@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drill 2: Working on Strings</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      input, button {
+        margin-top: 10px;
+        padding: 8px;
+        display: block;
+      }
+      #output {
+        margin-top: 20px;
+        white-space: pre-wrap;
+        background: #f3f3f3;
+        padding: 15px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>📇 String Showcase: My Basic Info</h1>
+
+    <label for="name">Name:</label>
+    <input id="name" type="text" />
+
+    <label for="age">Age:</label>
+    <input id="age" type="number" />
+
+    <label for="school">School:</label>
+    <input id="school" type="text" />
+
+    <button id="submit-btn">Generate Message</button>
+
+    <div id="output"></div>
+
+    <py-config>
+      @when("click", "#submit-btn")
+def show_message(event):
+    name = document.querySelector("#name").value
+    age = document.querySelector("#age").value
+    school = document.querySelector("#school").value
+
+    # Clear the output div first
+    document.querySelector("#output").innerText = ""
+
+    # Multiline message using input values
+    message = f"""👤 Student Profile
+    Name   : {name}
+    Age    : {age}
+    School : {school}
+
+    ✏️ Notes:
+    {name} is currently {age} years old and studies at {school}.
+    This information was gathered through input fields and displayed using
+    a multiline string in Python via PyScript.
+    """
+
+    display(message, target="output")
+    </py-config>
+
+    <script type="py" src="main.py"></script>
+
+  </body>
+</html>
